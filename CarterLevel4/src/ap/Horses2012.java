@@ -5,32 +5,29 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import ap.HorseBarn;
+
 public class Horses2012 {
-
-	// 1. read question #3 here: http://apcentral.collegeboard.com/apc/public/repository/ap_frq_computerscience_12.pdf
-	// 2. try to solve part (a) on paper
-
-	// 3. make this test pass
+	
 	@Test 
 	public void testHorseObject() throws Exception {
-		Horse horse = new Horse("Trigger", 1340);
+		HorseImpl horse = new HorseImpl("Trigger", 1340);
 		assertEquals("Trigger", horse.getName());
 		assertEquals(1340, horse.getWeight());
 	}
 
 	@Test
 	public void testSetUpSpaces() throws Exception {
-		// 4. create and initialize HorseBarn object
-		// 5. initialize spaces as in AP exam page 14
-		// 5.5 set the spaces array in the horseBarn object
-		// 6. extract the last 3 steps into a method called "createTestBarn()"
-		// 7. make the following asserts pass
+		HorseBarn horseBarn = HorseBarn.createTestBarn();
+		horseBarn.initializeHorses();
 		assertEquals("Trigger", horseBarn.getSpaces()[0].getName());
 		assertEquals("Silver", horseBarn.getSpaces()[2].getName());
 		assertEquals("Lady", horseBarn.getSpaces()[3].getName());
 		assertEquals("Patches", horseBarn.getSpaces()[5].getName());
 		assertEquals("Duke", horseBarn.getSpaces()[6].getName());
 	}
+
+	
 
 
 	@Test
@@ -45,9 +42,13 @@ public class Horses2012 {
 	
 	@Test
 	public void testPartB() throws Exception {
-		// 9. set up the barn
+		HorseBarn horseBarn = HorseBarn.createTestBarn();
 		horseBarn.consolidate();
-		// 10. write asserts that verify that the barn was consolidated (see page 16)
+		assertEquals("Trigger", horseBarn.getSpaces()[0].getName());
+		assertEquals("Silver", horseBarn.getSpaces()[1].getName());
+		assertEquals("Lady", horseBarn.getSpaces()[2].getName());
+		assertEquals("Patches", horseBarn.getSpaces()[3].getName());
+		assertEquals("Duke", horseBarn.getSpaces()[4].getName());
 	}
 	
 	

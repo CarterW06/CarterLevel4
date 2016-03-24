@@ -51,47 +51,26 @@ class Duke implements Horse {
 	}
 }
 
-class HorseBarn {
-	Horse[] spaces = new Horse[7];
-
-	{
-		spaces[0] = new Trigger();
-		spaces[2] = new Silver();
-		spaces[5] = new Patches();
-		spaces[6] = new Duke();
+class Lady implements Horse {
+	public String getName() {
+		return "Lady";
 	}
-
-	void consolidate() {
-		Horse[] correctList = new Horse[spaces.length];
-		int location = 0;
-		for (int i = 0; i < spaces.length; i++) {
-			if (spaces[i] == null) {
-				continue;
-			}
-			correctList[location] = spaces[i];
-			location++;
-		}
-		spaces = correctList;
-	}
-
-	int findHorseSpace(String s) {
-		for (int i = 0; i < spaces.length; i++) {
-			try {
-				if (s.equals(spaces[i].getName())) {
-					return i;
-				}
-			} catch (Exception e) {
-
-			}
-		}
-		return -1;
+	
+	public int getWeight() {
+		return 1575;
 	}
 }
 
 class HorseTest {
 	public static void main(String args[]) {
-		System.out.println(new HorseBarn().findHorseSpace("Patches"));
 		new HorseBarn().consolidate();
-		System.out.println(new HorseBarn().spaces);
+		System.out.println(new HorseBarn().findHorseSpace("Patches"));
+		for(int i = 0; i < new HorseBarn().getSpaces().length; i++) {
+			if(new HorseBarn().getSpaces()[i] == null) {
+				System.out.println("null");
+				continue;
+			}
+			System.out.println(new HorseBarn().getSpaces()[i].getName());
+		}
 	}
 }
