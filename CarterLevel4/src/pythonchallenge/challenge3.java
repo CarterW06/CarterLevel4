@@ -47,9 +47,6 @@ public class challenge3 {
 				}
 			}
 			runs++;
-			if (runs > 6) {
-
-			}
 		}
 	}
 }
